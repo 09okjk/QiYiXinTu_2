@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54fae9a8cc7a41a09d8ba1e730de9d12, type: 3}
+  m_Name: diag_new_structure_example
+  m_EditorClassIdentifier: 
+  dialogueID: diag_new_structure_example
+  state: 2
+  currentNodeID: node_1
+  conditions:
+    requiredCount: 2
+    conditions:
+    - rid: 5973608283518009624
+    - rid: 5973608283518009625
+    - rid: 5973608283518009626
+  nodes:
+  - nodeID: node_1
+    text: "\u4F60\u6EE1\u8DB3\u4E86 N \u4E2D\u53D6 M \u7684\u6761\u4EF6\uFF01"
+    speaker:
+      speakerID: system
+      speakerName: "\u7CFB\u7EDF"
+      speakerType: 2
+      emotion: 0
+    nextNodeID: 
+    choices:
+    - text: 
+      nextNodeID: 
+    questID: 
+    rewardIDs:
+    - 
+    isFollow: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 5973608283518009624
+      type: {class: QuestCompletedCondition, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        questIDs:
+        - main_quest_01
+    - rid: 5973608283518009625
+      type: {class: ItemAcquiredCondition, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        itemConditions:
+        - itemID: special_key
+          requiredAmount: 1
+    - rid: 5973608283518009626
+      type: {class: SceneNameCondition, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        sceneName: ThroneRoom

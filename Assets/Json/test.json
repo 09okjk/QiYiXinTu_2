@@ -1,0 +1,46 @@
+{
+  "dialogueID": "diag_new_structure_example",
+  "state": 2,
+  "currentNodeID": "node_1",
+  "conditions": {
+    "requiredCount": 2,
+    "conditions": [
+      {
+        "$type": "Dialogue.QuestCompletedCondition, Assembly-CSharp",
+        "questIDs": [
+          "main_quest_01"
+        ]
+      },
+      {
+        "$type": "Dialogue.ItemAcquiredCondition, Assembly-CSharp",
+        "itemConditions": [
+          {
+            "itemID": "special_key",
+            "requiredAmount": 1
+          }
+        ]
+      },
+      {
+        "$type": "Dialogue.SceneNameCondition, Assembly-CSharp",
+        "sceneName": "ThroneRoom"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "nodeID": "node_1",
+      "text": "你满足了 N 中取 M 的条件！",
+      "speaker": {
+        "speakerID": "system",
+        "speakerName": "系统",
+        "speakerType": 2,
+        "emotion": 0
+      },
+      "nextNodeID": null,
+      "choices": [],
+      "questID": null,
+      "rewardIDs": [],
+      "isFollow": false
+    }
+  ]
+}
