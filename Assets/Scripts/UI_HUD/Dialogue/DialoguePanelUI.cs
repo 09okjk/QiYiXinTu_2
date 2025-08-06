@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Core;
 using Dialogue;
+using PlayerCharacter;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -28,8 +30,9 @@ namespace UI_HUD.Dialogue
         [SerializeField] private TextMeshProUGUI systemDialogueText;
 
         private DialogueGameData _dialogueGameData;
-        private int _currentDialogueNodeIndex;
+        private string _currentDialogueNodeID;
         private List<DialogueNode> _currentDialogueNodes;
+        private DialogueNode _currentDialogueNode;
         private TextMeshProUGUI _currentText;
         private bool _isTyping;
         private void Start()
@@ -46,7 +49,7 @@ namespace UI_HUD.Dialogue
         private void InitDialogueUI()
         {
             continueButton.onClick.AddListener(OnContinueButtonClicked);
-            _currentDialogueNodeIndex = 0;
+            // _currentDialogueNodeID = _dialogueGameData.currentNodeID;
             if (_dialogueGameData == null)
             {
                 Debug.LogWarning("对话数据未初始化或为空");
@@ -86,31 +89,50 @@ namespace UI_HUD.Dialogue
                 Debug.LogWarning("对话数据未初始化或为空");
                 return;
             }
-            var currentNode = _currentDialogueNodes[_currentDialogueNodeIndex];
-            switch (currentNode.speaker.speakerType)
+            _currentDialogueNode = _currentDialogueNodes.FirstOrDefault(node => node.nodeID == _dialogueGameData.currentNodeID);
+            if (_currentDialogueNode == null)
+            {
+                FinishPanel();
+                return;
+            }
+            switch (_currentDialogueNode.speaker.speakerType)
             {
                 case SpeakerType.Player:
                     playerDialoguePanel.SetActive(true);
-                    playerImage.sprite = Resources.Load<Sprite>($"Art/Player/{currentNode.speaker.speakerID}_{currentNode.speaker.emotion.ToString()}");
-                    playerNameText.text = currentNode.speaker.speakerName!= "???" ? PlayerManager.Instance.player.playerData.playerName : currentNode.speaker.speakerName;
+                    playerImage.sprite = Resources.Load<Sprite>(
+                        $"Art/PlayerCharacter/{_currentDialogueNode.speaker.speakerID}_{_currentDialogueNode.speaker.emotion.ToString()}");
+                    playerNameText.text = _currentDialogueNode.speaker.speakerName != "???"
+                        ? PlayerManager.Instance.GetPlayer().GetPlayerName()
+                        : _currentDialogueNode.speaker.speakerName;
                     _currentText = playerDialogueText;
                     break;
                 case SpeakerType.Npc:
                     nPCDialoguePanel.SetActive(true);
-                    nPCImage.sprite = Resources.Load<Sprite>($"Art/NPC/{currentNode.speaker.speakerID}_{currentNode.speaker.emotion.ToString()}");
-                    nPCNameText.text = currentNode.speaker.speakerName;
+                    nPCImage.sprite = Resources.Load<Sprite>(
+                        $"Art/NPC/{_currentDialogueNode.speaker.speakerID}_{_currentDialogueNode.speaker.emotion.ToString()}");
+                    nPCNameText.text = _currentDialogueNode.speaker.speakerName;
                     _currentText = nPCDialogueText;
                     break;
                 case SpeakerType.System:
                     systemDialoguePanel.SetActive(true);
-                    systemNameText.text = currentNode.speaker.speakerName;
+                    systemNameText.text = _currentDialogueNode.speaker.speakerName;
                     _currentText = systemDialogueText;
                     break;
+                case SpeakerType.PlayerChoice:
+                case SpeakerType.NpcNotice:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-            
+
             // 使用携程实现打字机效果
-            StartCoroutine(TypeSentence(currentNode.text,FinishTyping));
-            
+            StartCoroutine(TypeSentence(_currentDialogueNode.text, FinishTyping));
+        }
+
+        private void FinishPanel()
+        {
+            DialogueManager.Instance.FinishDialogue(_dialogueGameData.dialogueID);
+            Hide();
         }
 
         /// <summary>
@@ -145,12 +167,12 @@ namespace UI_HUD.Dialogue
             {
                 Destroy(child.gameObject);
             }
-            if (_currentDialogueNodes[_currentDialogueNodeIndex].choices.Count > 0)
+            if (_currentDialogueNode.choices.Count > 0)
             {
                 // 创建选择按钮，每个按钮对应一个选择
-                for (int i = 0; i < _currentDialogueNodes[_currentDialogueNodeIndex].choices.Count; i++)
+                for (int i = 0; i < _currentDialogueNode.choices.Count; i++)
                 {
-                    DialogueChoice choice = _currentDialogueNodes[_currentDialogueNodeIndex].choices[i];
+                    DialogueChoice choice = _currentDialogueNode.choices[i];
                     GameObject buttonGo = Instantiate(choiceButtonPrefab, choiceButtonContainer);
 
                     // 设置按钮文本和点击事件
@@ -163,16 +185,22 @@ namespace UI_HUD.Dialogue
                     button.onClick.AddListener(() => OnChoiceSelected(choiceIndex));
                 }
             }
+            else
+            {
+                _dialogueGameData.currentNodeID = _currentDialogueNode.nextNodeID;
+            }
         }
 
         private void OnChoiceSelected(int choiceIndex)
         {
-            string nextNodeID = _currentDialogueNodes[_currentDialogueNodeIndex].choices[choiceIndex].nextNodeID;
+            _dialogueGameData.currentNodeID = _currentDialogueNode.choices[choiceIndex].nextNodeID;
 
             foreach (Transform child in choiceButtonContainer)
             {
                 Destroy(child.gameObject);
             }
+            
+            UpdateDialogueUI();
         }
     }
 }

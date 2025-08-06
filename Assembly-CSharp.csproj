@@ -47,13 +47,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Dialogue\DialogueManager.cs" />
+    <Compile Include="Assets\Scripts\PlayerCharacter\PlayerDefaultData.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\UIManager.cs" />
+    <Compile Include="Assets\Scripts\PlayerCharacter\Player.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemData.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\IUIPanel.cs" />
     <Compile Include="Assets\Scripts\Importer\DialogueJsonProcessor.cs" />
     <Compile Include="Assets\Scripts\Tools\LoggerManager.cs" />
+    <Compile Include="Assets\Scripts\PlayerCharacter\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueData.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\PanelUI.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\Dialogue\DialoguePanelUI.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventoryManager.cs" />
     <Compile Include="Assets\Scripts\Core\EventManager.cs" />
     <Compile Include="Assets\Scripts\Core\GameManager.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
