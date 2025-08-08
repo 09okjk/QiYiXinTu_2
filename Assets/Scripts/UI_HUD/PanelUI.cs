@@ -7,12 +7,12 @@ namespace UI_HUD
     {
         public virtual void Show()
         {
-            GameManager.Instance.PauseGame();
+            EventManager.Instance.TriggerUIPanelOpened(true);
         }
 
         public virtual void Hide()
         {
-            GameManager.Instance.ResumeGame();
+            EventManager.Instance.TriggerUIPanelOpened(false);
             gameObject.SetActive(false);
         }
     }

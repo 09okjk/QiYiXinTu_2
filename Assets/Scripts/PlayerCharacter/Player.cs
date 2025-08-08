@@ -1,6 +1,7 @@
 ﻿using System;
 using Tools;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace PlayerCharacter
 {

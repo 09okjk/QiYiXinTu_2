@@ -49,25 +49,41 @@
     <Compile Include="Assets\Scripts\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\PlayerCharacter\PlayerDefaultData.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\UIManager.cs" />
+    <Compile Include="Assets\Scripts\News\NewsData.cs" />
     <Compile Include="Assets\Scripts\PlayerCharacter\Player.cs" />
+    <Compile Include="Assets\Scripts\UI_HUD\Quest\QuestUI.cs" />
+    <Compile Include="Assets\Scripts\UI_HUD\News\NewsPanelUI.cs" />
+    <Compile Include="Assets\Scripts\Quest\QuestData.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemData.cs" />
+    <Compile Include="Assets\Scripts\UI_HUD\Inventory\InventoryPanelUI.cs" />
+    <Compile Include="Assets\Scripts\Tools\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\IUIPanel.cs" />
     <Compile Include="Assets\Scripts\Importer\DialogueJsonProcessor.cs" />
+    <Compile Include="Assets\Scripts\News\NewsManager.cs" />
+    <Compile Include="Assets\Scripts\UI_HUD\Inventory\ItemSlotUI.cs" />
+    <Compile Include="Assets\Scripts\UI_HUD\News\NewsSlot.cs" />
     <Compile Include="Assets\Scripts\Tools\LoggerManager.cs" />
     <Compile Include="Assets\Scripts\PlayerCharacter\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueData.cs" />
+    <Compile Include="Assets\Scripts\UI_HUD\News\NewsButton.cs" />
+    <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\PanelUI.cs" />
+    <Compile Include="Assets\Scripts\Core\LevelManager.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\Dialogue\DialoguePanelUI.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryManager.cs" />
     <Compile Include="Assets\Scripts\Core\EventManager.cs" />
     <Compile Include="Assets\Scripts\Core\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Quest\QuestManager.cs" />
+    <Compile Include="Assets\Scripts\UI_HUD\News\NewsPopUI.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Resources\Audio\BackgroundAudio\NewFile1.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Resources\Audio\EffectAudio\NewFile1.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\SDFFunctions.hlsl" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
@@ -443,11 +459,11 @@
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>D:\OtherProgram\UnityPrograms\QiYiXinTu_2\Library\PackageCache\com.unity.visualscripting\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>D:\OtherProgram\UnityPrograms\QiYiXinTu_2\Library\PackageCache\com.unity.nuget.mono-cecil\Mono.Cecil.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>D:\OtherProgram\UnityPrograms\QiYiXinTu_2\Library\PackageCache\com.unity.nuget.newtonsoft-json\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>D:\OtherProgram\UnityPrograms\QiYiXinTu_2\Library\PackageCache\com.unity.nuget.mono-cecil\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
       <HintPath>D:\UnityEditor\6000.0.25f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
@@ -932,6 +948,9 @@
     <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">
       <HintPath>D:\OtherProgram\UnityPrograms\QiYiXinTu_2\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Splines.Editor">
+      <HintPath>D:\OtherProgram\UnityPrograms\QiYiXinTu_2\Library\ScriptAssemblies\Unity.Splines.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Aseprite.Common">
       <HintPath>D:\OtherProgram\UnityPrograms\QiYiXinTu_2\Library\ScriptAssemblies\Unity.2D.Aseprite.Common.dll</HintPath>
     </Reference>
@@ -940,9 +959,6 @@
     </Reference>
     <Reference Include="Unity.2D.Animation.Runtime">
       <HintPath>D:\OtherProgram\UnityPrograms\QiYiXinTu_2\Library\ScriptAssemblies\Unity.2D.Animation.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Splines.Editor">
-      <HintPath>D:\OtherProgram\UnityPrograms\QiYiXinTu_2\Library\ScriptAssemblies\Unity.Splines.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections.Editor">
       <HintPath>D:\OtherProgram\UnityPrograms\QiYiXinTu_2\Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
