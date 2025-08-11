@@ -61,8 +61,10 @@
     <Compile Include="Assets\Scripts\Importer\DialogueJsonProcessor.cs" />
     <Compile Include="Assets\Scripts\News\NewsManager.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\Inventory\ItemSlotUI.cs" />
+    <Compile Include="Assets\Scripts\NpcCharacter\NpcManager.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\News\NewsSlot.cs" />
     <Compile Include="Assets\Scripts\Tools\LoggerManager.cs" />
+    <Compile Include="Assets\Scripts\NpcCharacter\NpcData.cs" />
     <Compile Include="Assets\Scripts\PlayerCharacter\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueData.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\News\NewsButton.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="Assets\Scripts\Inventory\InventoryManager.cs" />
     <Compile Include="Assets\Scripts\Core\EventManager.cs" />
     <Compile Include="Assets\Scripts\Core\GameManager.cs" />
+    <Compile Include="Assets\Scripts\NpcCharacter\Npc.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestManager.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\News\NewsPopUI.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

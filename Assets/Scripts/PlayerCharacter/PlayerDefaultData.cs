@@ -2,6 +2,7 @@
 
 namespace PlayerCharacter
 {
+    [CreateAssetMenu(fileName = "PlayerData", menuName = "ScriptableObjects/PlayerDefaultData")]
     public class PlayerDefaultData:ScriptableObject
     {
         public string playerName;
