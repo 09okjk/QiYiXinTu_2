@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using PlayerCharacter;
 using Tools;
 using UnityEngine;
 
@@ -138,14 +139,27 @@ namespace NpcCharacter
             {
                 _followNpcIds.Remove(npcId);
             }
-            // 将队列后面的Npc依次前移
-            for (int i = 0; i < _followNpcIds.Count; i++)
+        }
+        
+        public GameObject GetFollowTarget(string npcId)
+        {
+            if (_followNpcIds[0] == npcId)
             {
-                var followNpcId = _followNpcIds[i];
-                var npc = _activeNpcs.Find(n => n.gameObject.name == followNpcId);
-                if (npc != null)
+                return PlayerManager.Instance.GetPlayer().gameObject;
+            }
+            else
+            {
+                int index = _followNpcIds.IndexOf(npcId);
+                string targetNpcId = _followNpcIds[index - 1];
+                var targetNpc = _activeNpcs.Find(n => n.gameObject.name == targetNpcId);
+                if (targetNpc != null)
                 {
-                    npc.UpdateStatus();
+                    return targetNpc.gameObject;
+                }
+                else
+                {
+                    LoggerManager.Instance.LogWarning($"Follow target NPC with ID {targetNpcId} not found.");
+                    return null;
                 }
             }
         }
