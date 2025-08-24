@@ -42,13 +42,18 @@ namespace Audio
             {
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
-                InitializeAudioManager();
-                SetAudioGameData();
+
             }
             else
             {
                 Destroy(gameObject);
             }
+        }
+
+        private void Start()
+        {
+            InitializeAudioManager();
+            SetAudioGameData();
         }
 
         private void InitializeAudioManager()

@@ -14,7 +14,7 @@ namespace UI_HUD.Inventory
         private ObjectPool<ItemSlotUI> _itemPool; // 物品UI对象池
         private List<ItemSlotUI> _activeItems = new List<ItemSlotUI>(); // 当前激活的物品UI列表
 
-        private void Awake()
+        protected override void Awake()
         {
             var itemUIComponent = itemPrefab.GetComponent<ItemSlotUI>();
             _itemPool = new ObjectPool<ItemSlotUI>(itemUIComponent, ItemContainer.transform, 10);

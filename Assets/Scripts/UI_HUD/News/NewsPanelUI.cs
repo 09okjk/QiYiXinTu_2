@@ -21,7 +21,7 @@ namespace UI_HUD.News
         private ObjectPool<NewsSlot> _newsSlotPool; // 新闻项对象池
         private List<NewsSlot> _activeNewsSlots = new List<NewsSlot>(); // 当前激活的新闻项列表
 
-        private void Awake()
+        protected override void Awake()
         {
             var newsSlotComponent = newsItemPrefab.GetComponent<NewsSlot>();
             _newsSlotPool = new ObjectPool<NewsSlot>(newsSlotComponent, newsContent, 10);

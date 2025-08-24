@@ -25,6 +25,7 @@ namespace NpcCharacter
             transform.position = gameData.position;
             transform.eulerAngles = gameData.rotation;
             gameObject.name = gameData.npcName;
+            
             gameObject.SetActive(gameData.isActive);
         }
 

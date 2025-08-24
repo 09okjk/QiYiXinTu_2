@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
+using Tools;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,7 @@ namespace UI_HUD
     {
         public static UIManager Instance { get; private set; }
         
-        public List<PanelUI> panels;
+        // public List<PanelUI> panels;
         public PanelUI currentPanel;
         
         [Header("Confirm Dialog")]
@@ -47,10 +48,10 @@ namespace UI_HUD
         /// <summary>
         /// 显示指定名称的面板
         /// </summary>
-        /// <param name="panelObjectName">面板对象的名称</param>
-        public void ShowPanel(string panelObjectName)
+        /// <param name="panelTypeName">面板对象的名称</param>
+        public void ShowPanel(string panelTypeName)
         {
-            PanelUI panel = panels.Find(p => p.name == panelObjectName);
+            PanelUI panel = UIPanelRegistry.GetPanel(panelTypeName);
             if (panel != null)
             {
                 if (currentPanel != null)
@@ -63,7 +64,7 @@ namespace UI_HUD
             }
             else
             {
-                Debug.LogWarning($"Panel {panelObjectName} not found.");
+                LoggerManager.Instance.LogWarning($"Panel {panelTypeName} not found.");
             }
         }
         
@@ -79,7 +80,7 @@ namespace UI_HUD
         {
             if (!confirmDialogPanel)
             {
-                Debug.LogError("Confirm dialog panel not assigned!");
+                LoggerManager.Instance.LogError("Confirm dialog panel not assigned!");
                 return;
             }
             
@@ -142,7 +143,7 @@ namespace UI_HUD
         {
             if (!inputFieldWindow)
             {
-                Debug.LogError("Input field window not assigned!");
+                LoggerManager.Instance.LogError("Input field window not assigned!");
                 return Task.CompletedTask;
             }
             inputFieldTitleText.text = title;

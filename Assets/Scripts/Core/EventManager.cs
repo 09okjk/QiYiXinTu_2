@@ -26,6 +26,8 @@ namespace Core
         public event Action<bool> OnUIPanelOpened;
         public event Action<string> OnQuestCompleted;
         public event Action<string> OnQuestFailed;
+        public event Action OnGameSaved;
+        public event Action OnGameLoaded;
         
         //-------------------- 触发事件 --------------------
         
@@ -47,6 +49,15 @@ namespace Core
         public void TriggerQuestFailed(string questID)
         {
             OnQuestFailed?.Invoke(questID);
+        }
+        
+        public void TriggerGameSaved()
+        {
+            OnGameSaved?.Invoke();
+        }
+        public void TriggerGameLoaded()
+        {
+            OnGameLoaded?.Invoke();
         }
         #endregion
     }

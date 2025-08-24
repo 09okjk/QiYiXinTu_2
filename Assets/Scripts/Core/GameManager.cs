@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace Core
 {
@@ -9,11 +10,6 @@ namespace Core
         public static GameManager Instance {get; private set;}
         [SerializeField] private InputActionAsset inputActions;
 
-        #region Events
-
-        public event Action<string> OnDialogueFinished;
-
-        #endregion
         private void Awake()
         {
             if (Instance == null)
@@ -35,6 +31,11 @@ namespace Core
             EventManager.Instance.OnUIPanelOpened += OnUIPanelOpened;
             EventManager.Instance.OnQuestCompleted += OnQuestCompleted;
             EventManager.Instance.OnQuestFailed += OnQuestFailed;
+        }
+
+        public void ChangeScene(string scene)
+        {
+            SceneManager.LoadSceneAsync(scene, LoadSceneMode.Single);
         }
 
         public void PauseGame()

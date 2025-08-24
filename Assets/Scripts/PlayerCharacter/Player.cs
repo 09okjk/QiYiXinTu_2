@@ -1,4 +1,5 @@
 ﻿using System;
+using Core;
 using Tools;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,6 +14,8 @@ namespace PlayerCharacter
         public int Stamina = 5;
         public int Mana = 5;
         public float moveSpeed = 5f;
+        public Vector3 position;
+        public Vector3 rotation;
     }
     public class Player:MonoBehaviour
     {
@@ -31,6 +34,21 @@ namespace PlayerCharacter
         public string GetPlayerName()
         {
             return playerData.playerName;
+        }
+        
+        public void SetData(PlayerData data)
+        {
+            if (data == null)
+            {
+                LoggerManager.Instance.LogError("Player data cannot be null.");
+                return;
+            }
+            playerData = data;
+        }
+        
+        public PlayerData GetPlayerData()
+        {
+            return playerData;
         }
     }
 }
