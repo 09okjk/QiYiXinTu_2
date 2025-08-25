@@ -55,8 +55,10 @@
     <Compile Include="Assets\Scripts\UI_HUD\SceneAnimation\SceneAnimationController.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\News\NewsPanelUI.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestData.cs" />
+    <Compile Include="Assets\Scripts\PlayerCharacter\PlayerIdleState.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemData.cs" />
     <Compile Include="Assets\Scripts\Level\LevelManager.cs" />
+    <Compile Include="Assets\Scripts\PlayerCharacter\PlayerState.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\Inventory\InventoryPanelUI.cs" />
     <Compile Include="Assets\Scripts\Tools\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\IUIPanel.cs" />
@@ -65,6 +67,7 @@
     <Compile Include="Assets\Scripts\UI_HUD\Inventory\ItemSlotUI.cs" />
     <Compile Include="Assets\Scripts\NpcCharacter\NpcManager.cs" />
     <Compile Include="Assets\Scripts\Core\GameStateManager.cs" />
+    <Compile Include="Assets\Scripts\PlayerCharacter\PlayerMoveState.cs" />
     <Compile Include="Assets\Scripts\Save\ISaveable.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\News\NewsSlot.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\MenuUIManager.cs" />
@@ -78,6 +81,7 @@
     <Compile Include="Assets\Scripts\UI_HUD\Save\SaveSlotUI.cs" />
     <Compile Include="Assets\Scripts\Save\SaveManager.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\News\NewsButton.cs" />
+    <Compile Include="Assets\Scripts\PlayerCharacter\PlayerStateMachine.cs" />
     <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
     <Compile Include="Assets\Scripts\UI_HUD\PanelUI.cs" />
     <Compile Include="Assets\Scripts\Save\SaveSettings.cs" />
